@@ -9,7 +9,7 @@ COPY internal internal
 COPY cmd cmd
 COPY types types
 COPY pkg pkg
-RUN apk --no-cache add make git gcc libc-dev curl ca-certificates && make build
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && apk --no-cache add make git gcc libc-dev curl ca-certificates && make build
 
 # -----------------------------------------------------------------------------
 # Image...

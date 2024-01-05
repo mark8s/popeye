@@ -18,11 +18,11 @@ popeye:
 
 database:
   driver: postgres
-  host:
+  host: 10.31.0.250
   port: 15432
   database: zce
   username: gaussdb
-  password:
+  password: Zbcf@1234
   sslMode: disable
   timezone: Asia/Shanghai
   maxIdle: 3
