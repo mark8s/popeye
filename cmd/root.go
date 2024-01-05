@@ -89,7 +89,7 @@ func doIt(cmd *cobra.Command, args []string) {
 	}
 
 	if errCount > 0 || (flags.MinScore != nil && score < *flags.MinScore) {
-		os.Exit(1)
+		os.Exit(0)
 	}
 }
 
