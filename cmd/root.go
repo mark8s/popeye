@@ -78,6 +78,11 @@ func doIt(cmd *cobra.Command, args []string) {
 	if e := popeye.Init(); e != nil {
 		bomb(e.Error())
 	}
+
+	if e := popeye.InitDB(); e != nil {
+		bomb(e.Error())
+	}
+
 	errCount, score, err := popeye.Sanitize()
 	if err != nil {
 		bomb(err.Error())

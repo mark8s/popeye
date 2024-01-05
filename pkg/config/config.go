@@ -19,6 +19,7 @@ const defaultLintLevel = "ok"
 // Config tracks Popeye configuration options.
 type Config struct {
 	Popeye    `yaml:"popeye"`
+	Database  `yaml:"database"`
 	Flags     *Flags
 	LintLevel int
 }

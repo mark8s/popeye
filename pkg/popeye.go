@@ -10,6 +10,8 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"github.com/derailed/popeye/pkg/dao"
+	"github.com/derailed/popeye/pkg/model"
 	"io"
 	"net/http"
 	"net/url"
@@ -106,6 +108,11 @@ func (p *Popeye) Init() error {
 	}
 
 	return p.ensureOutput()
+}
+
+// InitDB sets db connections
+func (p *Popeye) InitDB() error {
+	return config.InitPostgres(p.config.Database)
 }
 
 // SetFactory sets the resource factory.
@@ -412,6 +419,22 @@ func (p *Popeye) dumpHTML() error {
 	return nil
 
 }
+
+func (p *Popeye) dumpToDB() error {
+	res, err := p.builder.ToJSON()
+	if err != nil {
+		return err
+	}
+
+	taskName := os.Getenv("TASK_NAME")
+	if taskName == "" {
+		taskName = "popeye-test"
+	}
+	data := model.CdkmInspectionRecord{TaskName: taskName, Results: res}
+	_, err = dao.InspectionService.InsertAddonInstance(data)
+	return err
+}
+
 func (p *Popeye) dumpScore() error {
 	res, err := p.builder.ToScore()
 	if err != nil {
@@ -502,6 +525,8 @@ func (p *Popeye) dump(printHeader bool) error {
 		err = p.dumpHTML()
 	case report.PrometheusFormat:
 		err = p.dumpPrometheus()
+	case report.DbFormat:
+		err = p.dumpToDB()
 	case report.ScoreFormat:
 		err = p.dumpScore()
 	default:

@@ -44,6 +44,8 @@ const (
 
 	// ScoreFormat pushes sanitizer as the value of the Score.
 	ScoreFormat = "score"
+
+	DbFormat = "database"
 )
 
 // Builder represents sanitizer

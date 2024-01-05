@@ -6,6 +6,7 @@ package config
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 const (
@@ -49,6 +50,21 @@ type (
 		Pod        Pod      `yaml:"pod"`
 		Codes      Glossary `yaml:"codes"`
 		Registries []string `yaml:"registries"`
+	}
+
+	Database struct {
+		Driver      string        `mapstructure:"driver" json:"driver" yaml:"driver"`                //驱动
+		Host        string        `mapstructure:"host" json:"host" yaml:"host"`                      //地址
+		Port        int           `mapstructure:"port" json:"port" yaml:"port"`                      //端口
+		Database    string        `mapstructure:"database" json:"database" yaml:"database"`          //数据库
+		Username    string        `mapstructure:"username" json:"username" yaml:"username"`          //用户名
+		Password    string        `mapstructure:"password" json:"password" yaml:"password"`          //密码
+		SslMode     string        `mapstructure:"sslMode" json:"sslMode" yaml:"sslMode"`             //sslMode
+		Timezone    string        `mapstructure:"timezone" json:"timezone" yaml:"timezone"`          //时区
+		MaxIdle     int           `mapstructure:"maxIdle" json:"maxIdle" yaml:"maxIdle"`             //最大idle数量
+		MaxOpen     int           `mapstructure:"maxOpen" json:"maxOpen" yaml:"maxOpen"`             //最大开启数量
+		MaxIdleTime time.Duration `mapstructure:"maxIdleTime" json:"maxIdleTime" yaml:"maxIdleTime"` //最大idle时间
+		MaxLifeTime time.Duration `mapstructure:"maxLifeTime" json:"maxLifeTime" yaml:"maxLifeTime"` //最大存活时间
 	}
 )
 

@@ -5,6 +5,7 @@ go 1.21.1
 require (
 	github.com/aws/aws-sdk-go v1.35.21
 	github.com/fvbommel/sortorder v1.0.1
+	github.com/google/martian v2.1.0+incompatible
 	github.com/magiconair/properties v1.8.5
 	github.com/prometheus/client_golang v1.12.1
 	github.com/prometheus/common v0.34.0
@@ -13,6 +14,8 @@ require (
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/net v0.17.0
 	gopkg.in/yaml.v2 v2.4.0
+	gorm.io/driver/postgres v1.5.4
+	gorm.io/gorm v1.25.5
 	k8s.io/api v0.29.0
 	k8s.io/apimachinery v0.29.0
 	k8s.io/cli-runtime v0.29.0
@@ -43,6 +46,11 @@ require (
 	github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7 // indirect
 	github.com/imdario/mergo v0.3.6 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
+	github.com/jackc/pgx/v5 v5.4.3 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -62,6 +70,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
 	go.starlark.net v0.0.0-20230525235612-a134d8f9ddca // indirect
+	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/oauth2 v0.10.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/sys v0.13.0 // indirect

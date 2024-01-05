@@ -1,0 +1,31 @@
+popeye:
+  allocations:
+    cpu:
+      over: 100
+      under: 50
+    memory:
+      over: 100
+      under: 50
+  node:
+    limits:
+      cpu:    90
+      memory: 80
+  pod:
+    limits:
+      cpu:    80
+      memory: 75
+    restarts: 6
+
+database:
+  driver: postgres
+  host:
+  port: 15432
+  database: zce
+  username: gaussdb
+  password:
+  sslMode: disable
+  timezone: Asia/Shanghai
+  maxIdle: 3
+  maxOpen: 10
+  maxIdleTime: 10000
+  maxLifeTime: 1800000
