@@ -79,10 +79,6 @@ func doIt(cmd *cobra.Command, args []string) {
 		bomb(e.Error())
 	}
 
-	if e := popeye.InitDB(); e != nil {
-		bomb(e.Error())
-	}
-
 	errCount, score, err := popeye.Sanitize()
 	if err != nil {
 		bomb(err.Error())
@@ -120,7 +116,7 @@ func initPopeyeFlags() {
 
 	rootCmd.Flags().StringVarP(flags.Output, "out", "o",
 		"standard",
-		"Specify the output type (standard, jurassic, yaml, json, html, junit, prometheus, score)",
+		"Specify the output type (standard, jurassic, yaml, json, html, junit, prometheus, score, db)",
 	)
 
 	rootCmd.Flags().BoolVarP(flags.Save, "save", "",

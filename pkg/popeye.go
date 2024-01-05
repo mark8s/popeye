@@ -526,6 +526,9 @@ func (p *Popeye) dump(printHeader bool) error {
 	case report.PrometheusFormat:
 		err = p.dumpPrometheus()
 	case report.DbFormat:
+		if err = p.InitDB(); err != nil {
+			return err
+		}
 		err = p.dumpToDB()
 	case report.ScoreFormat:
 		err = p.dumpScore()
