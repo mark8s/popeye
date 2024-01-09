@@ -13,6 +13,7 @@ import (
 	"github.com/derailed/popeye/pkg/dao"
 	"github.com/derailed/popeye/pkg/model"
 	"io"
+	"k8s.io/apimachinery/pkg/util/rand"
 	"net/http"
 	"net/url"
 	"os"
@@ -430,7 +431,10 @@ func (p *Popeye) dumpToDB() error {
 	if taskName == "" {
 		taskName = "popeye-test"
 	}
-	data := model.CdkmInspectionRecord{TaskName: taskName, Results: res}
+
+	cluster := os.Getenv("CLUSTER")
+	recordName := taskName + "-" + rand.String(6)
+	data := model.CdkmInspectionRecord{TaskName: taskName, Results: res, RecordName: recordName, ClusterId: cluster}
 	_, err = dao.InspectionService.InsertAddonInstance(data)
 	return err
 }
