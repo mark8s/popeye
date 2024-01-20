@@ -1,287 +1,287 @@
 codes:
   # Container
   100:
-    message: Untagged docker image in use
+    message: 容器镜像未指定tag
     severity: 3
   101:
-    message: Image tagged "latest" in use
+    message: 容器镜像tag为latest
     severity: 2
   102:
-    message: No probes defined
+    message: 容器未配置探针
     severity: 2
   103:
-    message: No liveness probe
+    message: 容器未配置存活探针
     severity: 2
   104:
-    message: No readiness probe
+    message: 容器未配置就绪探针
     severity: 2
   105:
-    message: '%s probe uses a port#, prefer a named port'
+    message: '%s 探针端口type为数值, 应优先使用命名端口'
     severity: 1
   106:
-    message: No resources requests/limits defined
+    message: 容器未配置资源配额 requests/limits
     severity: 2
   107:
-    message: No resource limits defined
+    message: 容器未配置资源配额 limits
     severity: 2
   108:
-    message: Unnamed port %d
+    message: 容器ContainerPort %d 未设置名称
     severity: 1
   109:
-    message: CPU Current/Request (%s/%s) reached user %d%% threshold (%d%%)
+    message: CPU 当前/请求 (%s/%s)达到用户 %d%% 阈值(%d%%)
     severity: 2
   110:
-    message: Memory Current/Request (%s/%s) reached user %d%% threshold (%d%%)
+    message: 内存 当前/请求 (%s/%s)达到用户 %d%% 阈值(%d%%)
     severity: 2
   111:
-    message: CPU Current/Limit (%s/%s) reached user %d%% threshold (%d%%)
+    message: CPU 当前/限制 (%s/%s)达到用户 %d%% 阈值(%d%%)
     severity: 3
   112:
-    message: Memory Current/Limit (%s/%s) reached user %d%% threshold (%d%%)
+    message: 内存 当前/限制 (%s/%s)达到用户 %d%% 阈值(%d%%)
     severity: 3
   113:
-    message:  Container image %s is not hosted on an allowed docker registry
+    message: 容器镜像 %s 未托管在允许的 Docker仓库上
     severity: 3
 
   # Pod
   200:
-    message: Pod is terminating [%d/%d]
+    message: Pod的状态为terminating [%d/%d]
     severity: 2
   201:
-    message: Pod is terminating [%d/%d] %s
+    message: Pod的状态为terminating [%d/%d] %s
     severity: 2
   202:
-    message: Pod is waiting [%d/%d]
+    message: Pod的状态为waiting [%d/%d]
     severity: 3
   203:
-    message: Pod is waiting [%d/%d] %s
+    message: Pod的状态为waiting [%d/%d] %s
     severity: 3
   204:
-    message: Pod is not ready [%d/%d]
+    message: Pod没有就绪 [%d/%d]
     severity: 3
   205:
-    message: Pod was restarted (%d) %s
+    message: Pod已重启多次 (%d) %s
     severity: 2
   206:
-    message: No PodDisruptionBudget defined
+    message: Pod没有配置 PodDisruptionBudget
     severity: 1
   207:
-    message: Pod is in an unhappy phase (%s)
+    message: Pod的状态为非Running和Succeeded (%s)
     severity: 3
   208:
-    message: Unmanaged pod detected. Best to use a controller
+    message: Pod没有被上层控制器管理，如Deployment等
     severity: 2
   209:
-    message: Pod is managed by multiple PodDisruptionBudgets (%s)
+    message: Pod被多个PodDisruptionBudgets(%s) 管理
     severity: 2
 
   # Security
   300:
-    message: Using "default" ServiceAccount
+    message: 使用了名称为default的ServiceAccount
     severity: 2
   301:
-    message: Connects to API Server? ServiceAccount token is mounted
+    message: 需要连接API Server吗? ServiceAccount token 挂载到Pod中了
     severity: 2
   302:
-    message: Pod could be running as root user. Check SecurityContext/Image
+    message: Pod可以以 root 用户身份运行，请检查SecurityContext。
     severity: 2
   303:
-    message: Do you mean it? ServiceAccount is automounting APIServer credentials
+    message: Pod的ServiceAccount设置了automountServiceAccountToken，有泄露APIServer token的风险
     severity: 2
   304:
-    message: References a secret "%s" which does not exist
+    message: ServiceAccount引用了不存在的secret "%s"
     severity: 3
   305:
-    message: References a docker-image "%s" pull secret which does not exist
+    message: ServiceAccount引用了不存在的imagePullSecrets "%s"
     severity: 3
   306:
-    message: Container could be running as root user. Check SecurityContext/Image
+    message: Container可以以 root 用户身份运行，请检查SecurityContext。
     severity: 2
 
   # General
   400:
-    message: Used? Unable to locate resource reference
+    message: 用过的？无法找到资源引用
     severity: 1
   401:
-    message: Key "%s" used? Unable to locate key reference
+    message: 配置中的Key “%s” ？无法找到Key引用
     severity: 1
   402:
-    message: No metrics-server detected
+    message: 未检测到 metrics-server
     severity: 1
   403:
-    message: Deprecated %s API group "%s". Use "%s" instead
+    message: 已弃用 %s API 组“%s”。使用“%s”代替
     severity: 2
   404:
-    message: Deprecation check failed. %v
+    message: 弃用检查失败。%v
     severity: 1
   405:
-    message: Is this a jurassic cluster? Might want to upgrade K8s a bit
+    message: K8s集群版本低于1.12，可能需要升级
     severity: 2
   406:
-    message: K8s version OK
+    message: K8s集群版本正常
     severity: 0
 
   # Deployment + StatefulSet
   500:
-    message: Zero scale detected
+    message: 检测到副本数为0
     severity: 2
   501:
-    message: Unhealthy %d desired but have %d available
+    message: Deployment或StatefulSet的副本数 %d 不等于可用副本数 %d，服务未就绪
     severity: 3
   503:
-    message: At current load, CPU under allocated. Current:%s vs Requested:%s (%s)
+    message: 在当前负载下，CPU 分配不足。当前：%s 与请求：%s (%s)
     severity: 2
   504:
-    message: At current load, CPU over allocated. Current:%s vs Requested:%s (%s)
+    message: 在当前负载下，CPU 过度分配。当前：%s 与请求：%s (%s)
     severity: 2
   505:
-    message: At current load, Memory under allocated. Current:%s vs Requested:%s (%s)
+    message: 在当前负载下，内存分配不足。当前：%s 与请求：%s (%s)
     severity: 2
   506:
-    message: At current load, Memory over allocated. Current:%s vs Requested:%s (%s)
+    message: 在当前负载下，内存过度分配。当前：%s 与请求：%s (%s)
     severity: 2
   507:
-    message: Deployment references ServiceAccount %q which does not exist
+    message: 工作负载引用了不存在的 ServiceAccount %q
     severity: 3
 
   # HPA
   600:
-    message: HPA %s references a Deployment %s which does not exist
+    message: HPA %s 引用了不存在的 Deployment %s
     severity: 3
   601:
-    message: HPA %s references a StatefulSet %s which does not exist
+    message: HPA %s 引用了不存在的 StatefulSet %s
     severity: 3
   602:
-    message: Replicas (%d/%d) at burst will match/exceed cluster CPU(%s) capacity by %s
+    message: 副本数（%d/%d）在突发情况下将匹配/超过集群CPU（%s）容量 %s
     severity: 2
   603:
-    message: Replicas (%d/%d) at burst will match/exceed cluster memory(%s) capacity by %s
+    message: 副本数（%d/%d）在突发情况下将匹配/超过集群内存（%s）容量 %s
     severity: 2
   604:
-    message: If ALL HPAs triggered, %s will match/exceed cluster CPU(%s) capacity by %s
+    message: 如果所有的水平自动伸缩（HPA）都被触发，%s 将匹配/超过集群 CPU（%s）容量 %s。
     severity: 2
   605:
-    message: If ALL HPAs triggered, %s will match/exceed cluster memory(%s) capacity by %s
+    message: 如果所有的水平自动伸缩（HPA）都被触发，%s 将匹配/超过集群 内存（%s）容量 %s。
     severity: 2
 
   # Node
   700:
-    message: Found taint "%s" but no pod can tolerate
+    message: 发现污点 "%s"，但没有Pod能够容忍
     severity: 2
   701:
-    message: Node is in an unknown condition
+    message: 节点状态为unknown
     severity: 3
   702:
-    message: Node is not in ready state
+    message: 节点未就绪（NotReady）
     severity: 3
   703:
-    message: Out of disk space
+    message: 磁盘空间不足
     severity: 3
   704:
-    message: Insufficient memory
+    message: 内存不足（MemoryPressure）
     severity: 2
   705:
-    message: Insufficient disk space
+    message: 磁盘空间不足（报DiskPressure）
     severity: 2
   706:
-    message: Insufficient PIDs on Node
+    message: 节点上的 PID 不足（PIDPressure）
     severity: 3
   707:
-    message: No network configured on node
+    message: 节点上未配置网络（NetworkUnavailable）
     severity: 3
   708:
-    message: No node metrics available
+    message: 没有可用的节点metrics
     severity: 1
   709:
-    message: CPU threshold (%d%%) reached %d%%
+    message: CPU 阈值 (%d%%) 达到 %d%%
     severity: 2
   710:
-    message: Memory threshold (%d%%) reached %d%%
+    message: 内存阈值 (%d%%) 已达到 %d%%
     severity: 2
   711:
-    message: Scheduling disabled
+    message: 节点设置了不可调度 unschedulable
     severity: 2
   712:
-    message: Found only one master node
+    message: 只有一个master节点
     severity: 1
 
   # Namespace
   800:
-    message: Namespace is inactive
+    message: Namespace的状态为inactive
     severity: 3
 
   # PodDisruptionBudget
   900:
-    message: Used? No pods match selector
+    message: PodDisruptionBudget没有设置Pod匹配选择器
     severity: 2
   901:
-    message: MinAvailable (%d) is greater than the number of pods(%d) currently running
+    message: MinAvailable (%d) 大于当前运行的 Pod 数量(%d)
     severity: 2
 
   # PV/PVC
   1000:
-    message: Available
+    message: PersistentVolume的状态为Available
     severity: 1
   1001:
-    message: Pending volume detected
+    message: PersistentVolume的状态为Pending
     severity: 3
   1002:
-    message: Lost volume detected
+    message: PersistentVolume的状态为Failed
     severity: 3
   1003:
-    message: Pending claim detected
+    message: PersistentVolumeClaim的状态为Pending
     severity: 3
   1004:
-    message: Lost claim detected
+    message: PersistentVolumeClaim的状态为Lost
     severity: 3
 
   # Service
   1100:
-    message: No pods match service selector
+    message: Service的selector匹配不到pod
     severity: 3
   1101:
-    message: Skip ports check. No explicit ports detected on pod %s
+    message: Service的selector匹配的pod %s 没有定义ports
     severity: 1
   1102:
-    message: 'Use of target port #%s for service port %s. Prefer named port'
+    message: 使用目标端口#%s 作为服务端口 %s。首选命名端口
     severity: 1
   1103:
-    message: Type LoadBalancer detected. Could be expensive
+    message: Service的类型为LoadBalancer，可能比较费钱
     severity: 1
   1104:
-    message: Do you mean it? Type NodePort detected
+    message: Service的类型为NodePort
     severity: 1
   1105:
-    message: No associated endpoints
+    message: Service关联不到endpoint
     severity: 3
   1106:
-    message: No target ports match service port %s
+    message: Service定义的target port没有匹配到port的端口
     severity: 3
   1107:
-    message: LoadBalancer detected but service sets externalTrafficPolicy to "Cluster"
+    message: Service的类型为LoadBalancer,但Service的externalTrafficPolicy设置为cluster
     severity: 1
   1108:
-    message: NodePort detected but service sets externalTrafficPolicy to "Local"
+    message: Service的类型为NodePort ,但Service的externalTrafficPolicy设置为Local
     severity: 1
   1109:
-    message: Only one Pod associated with this endpoint
+    message: 只有一个 Pod 与该Service的endpoint关联
     severity: 2
 
   # ReplicaSet
   1120:
-    message: Unhealthy ReplicaSet %d desired but have %d ready
+    message: ReplicaSet期望副本数不等于就绪副本数，ReplicaSet没就绪
     severity: 3
 
   # NetworkPolicies
   1200:
-    message: No pods match %s pod selector
+    message: 没有 pod 与 %s pod选择器匹配
     severity: 2
   1201:
-    message: No namespaces match %s namespace selector
+    message: 没有命名空间与 %s命名空间选择器匹配
     severity: 2
 
   # RBAC
 
   1300:
-    message: References a %s (%s) which does not exist
+    message: 引用了不存在的 %s (%s)
     severity: 2
