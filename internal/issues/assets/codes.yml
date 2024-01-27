@@ -60,7 +60,7 @@ codes:
     message: Pod没有就绪 [%d/%d]
     severity: 3
   205:
-    message: Pod已重启多次 (%d) %s
+    message: Pod已重启 (%d) %s
     severity: 2
   206:
     message: Pod没有配置 PodDisruptionBudget
@@ -80,10 +80,10 @@ codes:
     message: 使用了名称为default的ServiceAccount
     severity: 2
   301:
-    message: 需要连接API Server吗? ServiceAccount token 挂载到Pod中了
+    message: 需要连接API Server吗? ServiceAccount token 挂载到了Pod中
     severity: 2
   302:
-    message: Pod可以以 root 用户身份运行，请检查SecurityContext。
+    message: Pod可以以 root 用户身份运行，请检查SecurityContext
     severity: 2
   303:
     message: Pod的ServiceAccount设置了automountServiceAccountToken，有泄露APIServer token的风险
@@ -103,7 +103,7 @@ codes:
     message: 用过的？无法找到资源引用
     severity: 1
   401:
-    message: 配置中的Key “%s” ？无法找到Key引用
+    message: 配置中的Key “%s” ？无法找到对其的引用
     severity: 1
   402:
     message: 未检测到 metrics-server
@@ -255,7 +255,7 @@ codes:
     message: Service关联不到endpoint
     severity: 3
   1106:
-    message: Service定义的target port没有匹配到port的端口
+    message: 没有目标端口与服务端口 %s 匹配
     severity: 3
   1107:
     message: Service的类型为LoadBalancer,但Service的externalTrafficPolicy设置为cluster
@@ -269,7 +269,7 @@ codes:
 
   # ReplicaSet
   1120:
-    message: ReplicaSet期望副本数不等于就绪副本数，ReplicaSet没就绪
+    message: ReplicaSet期望副本数(%d)不等于就绪副本数(%d)，ReplicaSet没就绪
     severity: 3
 
   # NetworkPolicies
